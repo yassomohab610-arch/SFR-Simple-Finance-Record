@@ -179,6 +179,28 @@
             .features-grid { grid-template-columns: repeat(3, 1fr); max-width: 900px; }
             h1 { font-size: 4rem; }
         }
+
+        .btn-telegram {
+            background: rgba(36, 161, 222, 0.1); /* لون التليجرام خفيف */
+            color: #24a1de;
+            border: 1px solid rgba(36, 161, 222, 0.3);
+            box-shadow: 0 5px 20px rgba(36, 161, 222, 0.1);
+        }
+        
+        .btn-telegram:hover {
+            background: #24a1de;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(36, 161, 222, 0.4);
+        }
+
+        /* تعديل بسيط عشان الـ 3 زراير مياخدوش مساحة ضخمة */
+        .cta-group {
+            gap: 12px !important;
+        }
+        
+        .btn {
+            padding: 15px !important; /* قللنا الحشو تكة عشان التناسق */
+        }
     </style>
 </head>
 <body>
@@ -192,12 +214,18 @@
         <h1>SFR <span style="color:var(--neon-green)">GOLD</span></h1>
         <p>The world's most private and surgical financial command center. Built for those who build legacies.</p>
         
-        <div class="cta-group">
-            <!-- لينك التحميل من ميديا فاير -->
+<div class="cta-group">
+            <!-- 1. لينك التحميل من ميديا فاير (البطل) -->
             <a href="https://www.mediafire.com/file/9wvbw4ieti78xdc/SFR+Simple+Finance+Record.apk/file" class="btn btn-main">
-                <i class="ri-download-cloud-2-fill"></i> DOWNLOAD APK
+                <i class="ri-download-cloud-2-fill"></i> DOWNLOAD ELITE APK
             </a>
-            <!-- لينك الواتساب سايورت -->
+
+            <!-- 2. لينك التليجرام (المجتمع) -->
+            <a href="https://t.me/SFR_Gold_official" class="btn btn-telegram">
+                <i class="ri-telegram-fill"></i> JOIN COMMUNITY
+            </a>
+
+            <!-- 3. لينك الواتساب (الدعم الفني) -->
             <a href="https://wa.me/201068905521" class="btn btn-support">
                 <i class="ri-whatsapp-line"></i> GET ACTIVE KEY
             </a>
