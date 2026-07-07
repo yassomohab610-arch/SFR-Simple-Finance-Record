@@ -2,71 +2,246 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFR GOLD | The Elite Financial Standard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SFR GOLD | The Sovereign Wealth Standard</title>
+    
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
     <style>
-        :root { --gold: #d4af37; --neon: #10b981; --bg: #050508; }
-        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; text-align: center; overflow-x: hidden; }
-        .hero { padding: 80px 20px; background: radial-gradient(circle at top center, #161632 0%, #050508 100%); }
-        
-        /* تنسيق اللوجو */
-        .logo-glow { 
-            width: 100px; height: 100px; border-radius: 25px; 
-            box-shadow: 0 0 40px rgba(16, 185, 129, 0.4); 
-            margin-bottom: 25px; border: 1px solid var(--neon);
-            object-fit: cover;
+        :root {
+            --neon-green: #10b981;
+            --neon-blue: #3b82f6;
+            --gold: #d4af37;
+            --bg-dark: #050508;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
-        h1 { font-size: 2.8rem; font-weight: 900; margin: 10px 0; letter-spacing: 3px; }
-        .highlight { color: var(--neon); text-shadow: 0 0 20px var(--neon); }
-        p { color: #888; max-width: 450px; margin: 0 auto 40px; line-height: 1.6; font-size: 0.9rem; }
-        
-        .cta-container { display: flex; flex-direction: column; gap: 15px; align-items: center; }
-        .btn { display: flex; align-items: center; gap: 12px; padding: 16px 40px; border-radius: 15px; font-weight: 900; text-decoration: none; transition: 0.3s; width: 260px; justify-content: center; font-size: 0.9rem; }
-        .btn-download { background: var(--neon); color: #000; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4); }
-        .btn-telegram { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
-        .btn:hover { transform: translateY(-5px); filter: brightness(1.2); }
+        /* 🚫 إخفاء السكرول بار تماماً مع الحفاظ على الحركة */
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+        *::-webkit-scrollbar { display: none; }
 
-        .features-grid { padding: 40px 20px 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-        .f-card { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 22px; border: 1px solid rgba(255,255,255,0.05); text-align: left; }
-        .f-card i { font-size: 1.8rem; color: var(--neon); display: block; margin-bottom: 15px; text-shadow: 0 0 10px var(--neon); }
-        .f-card h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
-        .f-card p { margin: 0; font-size: 0.8rem; color: #666; text-align: left; }
-        
-        .footer { padding: 40px; border-top: 1px solid #111; font-size: 0.7rem; color: #444; letter-spacing: 1px; }
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* ✨ خلفية مبهجة ومنورة بالنيون */
+        .glow-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .hero {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-box {
+            width: 100px; height: 100px;
+            background: var(--bg-dark);
+            border: 2px solid var(--neon-green);
+            border-radius: 28px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.4);
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .badge {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.5);
+            max-width: 320px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 15px 0 40px;
+        }
+
+        /* 🔘 أزرار الأكشن الجبارة */
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .btn {
+            padding: 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-main {
+            background: var(--neon-green);
+            color: #000;
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-support {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn:active { transform: scale(0.95); }
+
+        /* 💎 شبكة الـ 6 مزايا (فخامة مطلقة) */
+        .features-grid {
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 بجانب بعض للموبايل */
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .f-card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px 15px;
+            border-radius: 24px;
+            text-align: left;
+        }
+
+        .f-card i {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .f-card h3 {
+            font-size: 0.85rem;
+            margin: 0 0 8px 0;
+            color: #fff;
+        }
+
+        .f-card p {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.3);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* ألوان الأيقونات المبهجة */
+        .ic-1 { color: #10b981; } .ic-2 { color: #3b82f6; } .ic-3 { color: #8b5cf6; }
+        .ic-4 { color: #f59e0b; } .ic-5 { color: #ec4899; } .ic-6 { color: #2dd4bf; }
+
+        .footer {
+            padding: 60px 20px;
+            opacity: 0.3;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        /* 📱 ريسبونسيف للأجهزة الكبيرة */
+        @media (min-width: 600px) {
+            .features-grid { grid-template-columns: repeat(3, 1fr); max-width: 900px; }
+            h1 { font-size: 4rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="glow-bg"></div>
+
     <section class="hero">
-        <!-- تم ربط اللوجو بملف logo.png اللي هترفعو -->
-        <img src="logo.png" alt="SFR GOLD" class="logo-glow">
-        <h1>SFR <span class="highlight">GOLD</span></h1>
-        <p>The elite standard of financial mastery. Command your assets, secure your surplus, and own your financial destiny.</p>
+        <div class="badge">MEMBERSHIP ELITE</div>
+        <div class="logo-box">
+            <img src="logo.png" alt="SFR GOLD">
+        </div>
+        <h1>SFR <span style="color:var(--neon-green)">GOLD</span></h1>
+        <p>The world's most private and surgical financial command center. Built for those who build legacies.</p>
         
-        <div class="cta-container">
-            <a href="https://www.mediafire.com/file/9wvbw4ieti78xdc/SFR+Simple+Finance+Record.apk/file" class="btn btn-download">
-                <i class="ri-download-cloud-2-fill"></i> DOWNLOAD ELITE APK
+        <div class="cta-group">
+            <!-- لينك التحميل من ميديا فاير -->
+            <a href="https://www.mediafire.com/file/9wvbw4ieti78xdc/SFR+Simple+Finance+Record.apk/file" class="btn btn-main">
+                <i class="ri-download-cloud-2-fill"></i> DOWNLOAD APK
             </a>
-            <a href="https://t.me/SFR_Gold_official" class="btn btn-telegram">
-                <i class="ri-telegram-fill"></i> JOIN COMMUNITY
+            <!-- لينك الواتساب سايورت -->
+            <a href="https://wa.me/201068905521" class="btn btn-support">
+                <i class="ri-whatsapp-line"></i> GET ACTIVE KEY
             </a>
         </div>
     </section>
 
+    <!-- الـ 6 مزايا المبهجة -->
     <div class="features-grid">
-        <!-- الـ 6 ميزات كاملة -->
-        <div class="f-card"><i class="ri-shield-user-line"></i><h3>Absolute Privacy</h3><p>Your financial data never leaves your device. No servers, no tracking, just pure security.</p></div>
-        <div class="f-card"><i class="ri-file-chart-line"></i><h3>Professional PDF Reports</h3><p>Generate deep-audit financial statements and portfolio breakdowns in seconds.</p></div>
-        <div class="f-card"><i class="ri-safe-2-line"></i><h3>Atomic Vault System</h3><p>Automatically capture and quarantine your monthly surplus liquidity into a secure reserve.</p></div>
-        <div class="f-card"><i class="ri-calendar-todo-line"></i><h3>Financial Calendar</h3><p>Stay ahead of every commitment with smart recurring payment reminders and tracking.</p></div>
-        <div class="f-card"><i class="ri-wallet-3-line"></i><h3>Unlimited Accounts</h3><p>Manage multiple bank accounts, cash wallets, and digital assets in one unified interface.</p></div>
-        <div class="f-card"><i class="ri-money-dollar-circle-line"></i><h3>Live Market Rates</h3><p>Real-time market intelligence for all world currencies with automated conversion logic.</p></div>
+        <div class="f-card">
+            <i class="ri-shield-user-line ic-1"></i>
+            <h3>Iron Privacy</h3>
+            <p>100% Local data. No servers, no tracking.</p>
+        </div>
+        <div class="f-card">
+            <i class="ri-file-chart-line ic-2"></i>
+            <h3>PDF Audits</h3>
+            <p>Professional financial statements in seconds.</p>
+        </div>
+        <div class="f-card">
+            <i class="ri-safe-2-line ic-3"></i>
+            <h3>Onyx Vault</h3>
+            <p>Automatically secure your monthly surplus.</p>
+        </div>
+        <div class="f-card">
+            <i class="ri-exchange-funds-line ic-4"></i>
+            <h3>Live Rates</h3>
+            <p>Real-time sync with 160+ world currencies.</p>
+        </div>
+        <div class="f-card">
+            <i class="ri-calendar-todo-line ic-5"></i>
+            <h3>Smart Logic</h3>
+            <p>Intuitive recurring payments & reminders.</p>
+        </div>
+        <div class="f-card">
+            <i class="ri-wallet-3-line ic-6"></i>
+            <h3>Multi-Assets</h3>
+            <p>Unlimited wallets for a unified portfolio.</p>
+        </div>
     </div>
 
     <div class="footer">
-        © 2026 SFR GOLD ELITE | BUILT FOR COMMANDERS<br>
-        SECURE INVESTMENT TRACKING PLATFORM
+        SFR GOLD ELITE EDITION V1.0<br>
+        DESIGNED FOR FINANCIAL COMMANDERS<br>
+        © 2026 OFFICIAL DISTRIBUTION
     </div>
 </body>
 </html>
